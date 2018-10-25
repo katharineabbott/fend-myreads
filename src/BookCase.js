@@ -10,8 +10,8 @@ class BookCase extends Component {
                 </div>
                 <div className="list-books-content">
                     <Shelf category='Currently Reading'/>
-                    <Shelf category='Want to Read'/>
-                    <Shelf category='Read'/>
+                    <Shelf category='Want to Read' />
+                    <Shelf category='Read' />
                 </div>
                 <div className="open-search">
                     <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
@@ -22,3 +22,5 @@ class BookCase extends Component {
 }
 
 export default BookCase
+
+//readBooks={this.props.state.shelves.readShelf}
