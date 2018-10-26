@@ -13,10 +13,10 @@ class BooksApp extends React.Component {
   }
 
   populateShelves = () => {
-    let noShelf = this.state.noShelf
-    let currentlyReadingShelf = this.state.currentlyReadingShelf
-    let wantToReadShelf = this.state.wantToReadShelf
-    let readShelf = this.state.readShelf
+    let noShelf = [];
+    let currentlyReadingShelf = [];
+    let wantToReadShelf = [];
+    let readShelf = [];
     BooksAPI.getAll().then(result => {
       result.forEach(book => {
         if (book.shelf === 'currentlyReading') {
@@ -29,6 +29,10 @@ class BooksApp extends React.Component {
           noShelf.push(book)
         }
       })
+      this.setState({noShelf: noShelf});
+      this.setState({currentlyReadingShelf: currentlyReadingShelf});
+      this.setState({wantToReadShelf: wantToReadShelf});
+      this.setState({readShelf: readShelf});
     })
   }
   
