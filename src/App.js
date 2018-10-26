@@ -7,19 +7,44 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     noShelf: [],
-    currentlyReadingShelf: {title: 'To Kill A Mockingbird'},
+    currentlyReadingShelf: [],
     wantToReadShelf: [],
-    readShelf: [],
+    readShelf: []
   }
 
+  populateShelves = () => {
+    let noShelf = this.state.noShelf
+    let currentlyReadingShelf = this.state.currentlyReadingShelf
+    let wantToReadShelf = this.state.wantToReadShelf
+    let readShelf = this.state.readShelf
+    BooksAPI.getAll().then(result => {
+      result.forEach(book => {
+        if (book.shelf === 'currentlyReading') {
+          currentlyReadingShelf.push(book)
+        } else if (book.shelf === 'wantToRead') {
+          wantToReadShelf.push(book)
+        } else if (book.shelf === 'read') {
+          readShelf.push(book)
+        } else {
+          noShelf.push(book)
+        }
+      })
+    })
+  }
+  
   componentDidMount(){
-    console.log(BooksAPI.getAll().then(function(result){console.log(result)}))
+    this.populateShelves()
   }
 
   render() {
     return (
       <div className="app">
-        <BookCase />
+        <BookCase 
+          none={this.state.noShelf} 
+          currentlyReading={this.state.currentlyReadingShelf} 
+          wantToRead={this.state.wantToReadShelf} 
+          read={this.state.readShelf} 
+        />
       </div>
     )
   }
