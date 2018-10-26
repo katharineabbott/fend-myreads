@@ -29,6 +29,10 @@ class BooksApp extends React.Component {
           noShelf.push(book)
         }
       })
+      this.setState({noShelf: noShelf});
+      this.setState({currentlyReadingShelf: currentlyReadingShelf});
+      this.setState({wantToReadShelf: wantToReadShelf});
+      this.setState({readShelf: readShelf});
     })
   }
   

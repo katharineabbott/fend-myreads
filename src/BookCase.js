@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Shelf from './Shelf'
 
 class BookCase extends Component {
-    
     render() {
         return (
             <div className="list-books">

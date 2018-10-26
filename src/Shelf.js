@@ -3,7 +3,6 @@ import Book from './Book'
 // import * as BooksAPI from './BooksAPI'
 
 class Shelf extends Component {
- 
     render() {
         return (
             <div>
@@ -11,10 +10,9 @@ class Shelf extends Component {
                     <h2 className="bookshelf-title">{this.props.title}</h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
-                        {this.props.bookArray.forEach(() =>(
-                            <Book/>
-                        ))}
-                            
+                            {this.props.bookArray.map((book) => (
+                                <Book title={book.title} author={book.authors.map((author) => {return author + " "})} url={book.imageLinks.thumbnail}/>
+                            ))}
                         </ol>
                     </div>
                 </div>
