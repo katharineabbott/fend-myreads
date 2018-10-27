@@ -9,7 +9,8 @@ class BooksApp extends React.Component {
     noShelf: [],
     currentlyReadingShelf: [],
     wantToReadShelf: [],
-    readShelf: []
+    readShelf: [],
+    bookCategory: []
   }
 
   populateShelves = () => {

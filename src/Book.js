@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
-// import ReactDOM from 'react-dom'
 
 class Book extends Component {
+    handleShelfChange = (currentVal, newVal) => {
+        //take current value
+        //take new value
+        //update shelf of book object to new value
+        //trigger shelves to update
+    }
+
     render() {
         return (
             <li>
@@ -27,5 +33,3 @@ class Book extends Component {
 }
 
 export default Book
-
-//onClick={this.setState({shelf: 'currentlyReading'})}
