@@ -10,7 +10,7 @@ class BooksApp extends React.Component {
     currentlyReadingShelf: [],
     wantToReadShelf: [],
     readShelf: [],
-    bookCategory: []
+    bookCategory: "none"
   }
 
   populateShelves = () => {
@@ -49,6 +49,7 @@ class BooksApp extends React.Component {
           currentlyReading={this.state.currentlyReadingShelf} 
           wantToRead={this.state.wantToReadShelf} 
           read={this.state.readShelf} 
+          value={this.state.bookCategory}
         />
       </div>
     )
