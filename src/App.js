@@ -9,8 +9,7 @@ class BooksApp extends React.Component {
     noShelf: [],
     currentlyReadingShelf: [],
     wantToReadShelf: [],
-    readShelf: [],
-    bookCategory: "none"
+    readShelf: []
   }
 
   populateShelves = () => {
@@ -41,19 +40,6 @@ class BooksApp extends React.Component {
     this.populateShelves()
   }
 
-  handleShelfChange = (event) => {
-    let newValue = event.nativeEvent.target.value
-    let oldValue = this.state.bookCategory
-    console.log(oldValue)
-    console.log(newValue)
-    if (newValue !== oldValue) {
-        this.setState({bookCategory: newValue})
-    }
-    //state needs to apply only to single book
-    //update shelf of book object to new value
-    //trigger shelves to update
-}
-
   render() {
     return (
       <div className="app">
@@ -62,7 +48,7 @@ class BooksApp extends React.Component {
           currentlyReading={this.state.currentlyReadingShelf} 
           wantToRead={this.state.wantToReadShelf} 
           read={this.state.readShelf} 
-          handleShelfChange={this.handleShelfChange}
+          populateShelves={this.populateShelves}
         />
       </div>
     )

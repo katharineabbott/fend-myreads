@@ -9,9 +9,9 @@ class BookCase extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelf title='Currently Reading' bookArray={this.props.currentlyReading} handleShelfChange={this.props.handleShelfChange}/>
-                    <Shelf title='Want to Read' bookArray={this.props.wantToRead} handleShelfChange={this.props.handleShelfChange}/>
-                    <Shelf title='Read' bookArray={this.props.read} handleShelfChange={this.props.handleShelfChange}/>
+                    <Shelf title='Currently Reading' bookArray={this.props.currentlyReading} populateShelves={this.props.populateShelves}/>
+                    <Shelf title='Want to Read' bookArray={this.props.wantToRead} populateShelves={this.props.populateShelves}/>
+                    <Shelf title='Read' bookArray={this.props.read} populateShelves={this.props.populateShelves}/>
                 </div>
                 <div className="open-search">
                     <a>Add a book</a>

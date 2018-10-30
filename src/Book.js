@@ -1,7 +1,24 @@
 import React, {Component} from 'react'
 
 class Book extends Component {
-    
+    state = {
+        bookCategory: "none"
+    }
+
+    handleShelfChange = (event) => {
+        let newValue = event.nativeEvent.target.value
+        let oldValue = this.state.bookCategory
+        console.log(oldValue)
+        console.log(newValue)
+        if (newValue !== oldValue) {
+            this.setState({bookCategory: newValue})
+            // this.props.populateShelves()
+        }
+        
+        //state needs to apply only to single book
+        //update shelf of book object to new value
+        //trigger shelves to update
+    }
 
     render() {
         return (
@@ -10,7 +27,7 @@ class Book extends Component {
                     <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(' + this.props.url + ')' }}></div>
                     <div className="book-shelf-changer">
-                        <select onChange={(event) => {this.props.handleShelfChange(event)}}>
+                        <select onChange={(event) => {this.handleShelfChange(event)}}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
