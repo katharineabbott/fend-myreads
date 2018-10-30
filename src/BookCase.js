@@ -7,7 +7,8 @@ class BookCase extends Component {
         noShelf: [],
         currentlyReadingShelf: [],
         wantToReadShelf: [],
-        readShelf: []
+        readShelf: [],
+        bookCategory: ""
     }
 
     populateShelves = () => {
@@ -42,14 +43,13 @@ class BookCase extends Component {
     })
     }
     
-    handleShelfChange = (event) => {
+    handleShelfChange = (event, id, shelf) => {
     let newValue = event.nativeEvent.target.value
-    let oldValue = this.state.bookCategory
-    console.log(oldValue)
     console.log(newValue)
-    if (newValue !== oldValue) {
-        this.setState({bookCategory: newValue})
-    }
+    console.log(id)
+    console.log(shelf)
+    // BooksAPI.update()
+
     
     // this.populateShelves()
     //state needs to apply only to single book
