@@ -49,6 +49,9 @@ class BooksApp extends React.Component {
     let oldValue = this.state.bookCategory
     console.log(oldValue)
     console.log(newValue)
+    if (newValue !== oldValue) {
+        this.setState({bookCategory: newValue})
+    }
     
     // this.populateShelves()
     //state needs to apply only to single book
