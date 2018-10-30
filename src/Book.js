@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI'
 
 class Book extends Component {
     shelfChange = (book, shelf) => {
-        BooksAPI.update(book, shelf).then((response) => {debugger})
+        BooksAPI.update(book, shelf).then((response) => {console.log(response)})
     }
     
     render() {

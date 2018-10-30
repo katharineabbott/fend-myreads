@@ -43,12 +43,12 @@ class BookCase extends Component {
     })
     }
     
-    handleShelfChange = (event, id, shelf, book) => {
-    let newValue = event.nativeEvent.target.value
-    console.log(newValue)
-    console.log(id)
-    console.log(shelf)
-    console.log(book)
+    // handleShelfChange = (event, id, shelf, book) => {
+    // let newValue = event.nativeEvent.target.value
+    // console.log(newValue)
+    // console.log(id)
+    // console.log(shelf)
+    // console.log(book)
     // BooksAPI.update()
 
     
@@ -56,7 +56,7 @@ class BookCase extends Component {
     //state needs to apply only to single book
     //update shelf of book object to new value
     //trigger shelves to update
-    }
+    // }
 
     componentDidMount(){
     this.populateShelves()
