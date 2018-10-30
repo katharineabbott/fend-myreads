@@ -12,9 +12,8 @@ class Book extends Component {
         console.log(newValue)
         if (newValue !== oldValue) {
             this.setState({bookCategory: newValue})
-            // this.props.populateShelves()
         }
-        
+        // this.props.populateShelves()
         //state needs to apply only to single book
         //update shelf of book object to new value
         //trigger shelves to update

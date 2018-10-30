@@ -18,14 +18,22 @@ class BooksApp extends React.Component {
     let wantToReadShelf = this.state.wantToReadShelf
     let readShelf = this.state.readShelf
     BooksAPI.getAll().then(result => {
+      // this.setState({noShelf: []})
+      // this.setState({currentlyReadingShelf: []})
+      // this.setState({wantToReadShelf: []})
+      // this.setState({readShelf: []})
       result.forEach(book => {
         if (book.shelf === 'currentlyReading') {
+          // this.setState({bookCategory: book.shelf})
           currentlyReadingShelf.push(book)
         } else if (book.shelf === 'wantToRead') {
+          // this.setState({bookCategory: book.shelf})
           wantToReadShelf.push(book)
         } else if (book.shelf === 'read') {
+          // this.setState({bookCategory: book.shelf})
           readShelf.push(book)
         } else {
+          // this.setState({bookCategory: book.shelf})
           noShelf.push(book)
         }
       })
@@ -36,6 +44,18 @@ class BooksApp extends React.Component {
     })
   }
   
+  handleShelfChange = (event) => {
+    let newValue = event.nativeEvent.target.value
+    let oldValue = this.state.bookCategory
+    console.log(oldValue)
+    console.log(newValue)
+    
+    // this.populateShelves()
+    //state needs to apply only to single book
+    //update shelf of book object to new value
+    //trigger shelves to update
+  }
+
   componentDidMount(){
     this.populateShelves()
   }
@@ -48,7 +68,7 @@ class BooksApp extends React.Component {
           currentlyReading={this.state.currentlyReadingShelf} 
           wantToRead={this.state.wantToReadShelf} 
           read={this.state.readShelf} 
-          populateShelves={this.populateShelves}
+          handleShelfChange={this.handleShelfChange}
         />
       </div>
     )
