@@ -43,11 +43,12 @@ class BookCase extends Component {
     })
     }
     
-    handleShelfChange = (event, id, shelf) => {
+    handleShelfChange = (event, id, shelf, book) => {
     let newValue = event.nativeEvent.target.value
     console.log(newValue)
     console.log(id)
     console.log(shelf)
+    console.log(book)
     // BooksAPI.update()
 
     
