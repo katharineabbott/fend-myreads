@@ -17,6 +17,7 @@ class BookCase extends Component {
     let readShelf = this.state.readShelf
     BooksAPI.getAll().then(result => {
         result.forEach(book => {
+        this.setState({bookCategory: book.shelf})
         if (book.shelf === 'currentlyReading') {
             // this.setState({bookCategory: book.shelf})
             currentlyReadingShelf.push(book)
@@ -38,14 +39,16 @@ class BookCase extends Component {
     })
     }
     
-    handleShelfChange = (id, shelf, book) => {
+    handleShelfChange = (shelf, book) => {
         if (book.shelf !== shelf) {
+            book.shelf = shelf
             this.setState({noShelf: []})
             this.setState({currentlyReadingShelf: []})
             this.setState({wantToReadShelf: []})
             this.setState({readShelf: []})
-            book.shelf = shelf
             this.populateShelves()
+        } else {
+            alert("This book is already on that shelf!")
         }
     }
 
@@ -60,9 +63,9 @@ class BookCase extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelf title='Currently Reading' bookArray={this.state.currentlyReadingShelf} populateShelves={this.populateShelves}/>
-                    <Shelf title='Want to Read' bookArray={this.state.wantToReadShelf}  populateShelves={this.populateShelves}/>
-                    <Shelf title='Read' bookArray={this.state.readShelf} populateShelves={this.handleShelfChange}/>
+                    <Shelf title='Currently Reading' bookArray={this.state.currentlyReadingShelf} handleShelfChange={this.handleShelfChange}/>
+                    <Shelf title='Want to Read' bookArray={this.state.wantToReadShelf}  handleShelfChange={this.handleShelfChange}/>
+                    <Shelf title='Read' bookArray={this.state.readShelf} handleShelfChange={this.handleShelfChange}/>
                 </div>
                 <div className="open-search">
                     <a>Add a book</a>
