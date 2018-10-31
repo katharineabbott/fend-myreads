@@ -7,8 +7,7 @@ class BookCase extends Component {
         noShelf: [],
         currentlyReadingShelf: [],
         wantToReadShelf: [],
-        readShelf: [],
-        bookCategory: ""
+        readShelf: []
     }
 
     populateShelves = () => {
@@ -17,10 +16,6 @@ class BookCase extends Component {
     let wantToReadShelf = this.state.wantToReadShelf
     let readShelf = this.state.readShelf
     BooksAPI.getAll().then(result => {
-        // this.setState({noShelf: []})
-        // this.setState({currentlyReadingShelf: []})
-        // this.setState({wantToReadShelf: []})
-        // this.setState({readShelf: []})
         result.forEach(book => {
         if (book.shelf === 'currentlyReading') {
             // this.setState({bookCategory: book.shelf})
@@ -43,20 +38,16 @@ class BookCase extends Component {
     })
     }
     
-    // handleShelfChange = (event, id, shelf, book) => {
-    // let newValue = event.nativeEvent.target.value
-    // console.log(newValue)
-    // console.log(id)
-    // console.log(shelf)
-    // console.log(book)
-    // BooksAPI.update()
-
-    
-    // this.populateShelves()
-    //state needs to apply only to single book
-    //update shelf of book object to new value
-    //trigger shelves to update
-    // }
+    handleShelfChange = (id, shelf, book) => {
+        if (book.shelf !== shelf) {
+            this.setState({noShelf: []})
+            this.setState({currentlyReadingShelf: []})
+            this.setState({wantToReadShelf: []})
+            this.setState({readShelf: []})
+            book.shelf = shelf
+            this.populateShelves()
+        }
+    }
 
     componentDidMount(){
     this.populateShelves()
@@ -69,9 +60,9 @@ class BookCase extends Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelf title='Currently Reading' bookArray={this.state.currentlyReadingShelf} handleShelfChange={this.handleShelfChange}/>
-                    <Shelf title='Want to Read' bookArray={this.state.wantToReadShelf}  handleShelfChange={this.handleShelfChange}/>
-                    <Shelf title='Read' bookArray={this.state.readShelf} handleShelfChange={this.handleShelfChange}/>
+                    <Shelf title='Currently Reading' bookArray={this.state.currentlyReadingShelf} populateShelves={this.populateShelves}/>
+                    <Shelf title='Want to Read' bookArray={this.state.wantToReadShelf}  populateShelves={this.populateShelves}/>
+                    <Shelf title='Read' bookArray={this.state.readShelf} populateShelves={this.handleShelfChange}/>
                 </div>
                 <div className="open-search">
                     <a>Add a book</a>

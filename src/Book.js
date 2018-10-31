@@ -2,8 +2,12 @@ import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class Book extends Component {
+    state = {
+        bookCategory: "none"
+    }
+
     shelfChange = (book, shelf) => {
-        BooksAPI.update(book, shelf).then((response) => {console.log(response)})
+        BooksAPI.update(book, shelf).then((response) => {this.props.populateShelves(book.id, shelf, book)})
     }
     
     render() {
@@ -15,7 +19,7 @@ class Book extends Component {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(' + this.props.url + ')' }}></div>
                     <div className="book-shelf-changer">
                         <select onChange={(event) => {this.shelfChange(this.props.book, event.nativeEvent.target.value)}}>
-                        <option value="move" disabled>Move to...</option>
+                        <option value="move" selected disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
