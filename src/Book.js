@@ -36,6 +36,3 @@ class Book extends Component {
 }
 
 export default Book
-
-//onChange goes in <select>
-//event.nativeEvent.target.value to access value of drop down item selected
