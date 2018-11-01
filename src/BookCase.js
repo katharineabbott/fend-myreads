@@ -7,8 +7,7 @@ class BookCase extends Component {
         noShelf: [],
         currentlyReadingShelf: [],
         wantToReadShelf: [],
-        readShelf: [],
-        bookCategory: ""
+        readShelf: []
     }
 
     populateShelves = () => {
@@ -17,11 +16,8 @@ class BookCase extends Component {
     let wantToReadShelf = this.state.wantToReadShelf
     let readShelf = this.state.readShelf
     BooksAPI.getAll().then(result => {
-        // this.setState({noShelf: []})
-        // this.setState({currentlyReadingShelf: []})
-        // this.setState({wantToReadShelf: []})
-        // this.setState({readShelf: []})
         result.forEach(book => {
+        this.setState({bookCategory: book.shelf})
         if (book.shelf === 'currentlyReading') {
             // this.setState({bookCategory: book.shelf})
             currentlyReadingShelf.push(book)
@@ -43,19 +39,17 @@ class BookCase extends Component {
     })
     }
     
-    handleShelfChange = (event, id, shelf, book) => {
-    let newValue = event.nativeEvent.target.value
-    console.log(newValue)
-    console.log(id)
-    console.log(shelf)
-    console.log(book)
-    // BooksAPI.update()
-
-    
-    // this.populateShelves()
-    //state needs to apply only to single book
-    //update shelf of book object to new value
-    //trigger shelves to update
+    handleShelfChange = (shelf, book) => {
+        if (book.shelf !== shelf) {
+            book.shelf = shelf
+            this.setState({noShelf: []})
+            this.setState({currentlyReadingShelf: []})
+            this.setState({wantToReadShelf: []})
+            this.setState({readShelf: []})
+            this.populateShelves()
+        } else {
+            alert("This book is already on that shelf!")
+        }
     }
 
     componentDidMount(){
