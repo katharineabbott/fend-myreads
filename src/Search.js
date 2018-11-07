@@ -21,6 +21,7 @@ class Search extends Component {
                             you don't find a specific author or title. Every search is limited by search terms.
                         */}
                         <input type="text" placeholder="Search by title or author" value={this.props.query} onChange={(event) => this.props.updateQuery(event.target.value)} />
+                        
 
                         </div>
                     </div>
@@ -28,13 +29,11 @@ class Search extends Component {
                         <ol className="books-grid"></ol>
                     </div>
                 </div>
-                <div className="bookshelf-books">
                         <ol className="books-grid">
                             {this.props.matchingBooks.map((book) => (
                                 <Book key={book.id} title={book.title} author={book.authors.join(', ')} url={book.imageLinks.thumbnail} shelf={book.shelf}  handleShelfChange={this.props.handleShelfChange} id={book.id} book={book}/>
                             ))}
                         </ol>
-                    </div>
             </div>
         )
     }

@@ -60,13 +60,16 @@ class BooksApp extends React.Component {
   updateQuery = (query) => {
     let matchingBooks = this.state.matchingBooks
     this.setState({query: query.trim()})
+    this.setState({matchingBooks: []})
     BooksAPI.search(query).then((response) => {
-        if (this.state.query.length >= 1) {
+        if (this.state.query.length >= 1 && response.length > 0) {
             response.forEach(book => {
                 matchingBooks.push(book)
             })
+        } else if (this.state.query.length >= 1) {
+            console.log("No books found")
         } else {
-            console.log("No search term")
+          console.log("No search term")
         }
     })
     this.setState({matchingBooks: matchingBooks})
