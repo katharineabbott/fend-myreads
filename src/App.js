@@ -60,7 +60,6 @@ class BooksApp extends React.Component {
   updateQuery = (query) => {
     let matchingBooks = this.state.matchingBooks
     this.setState({query: query.trim()})
-    this.setState({matchingBooks: []})
     BooksAPI.search(query).then((response) => {
         if (this.state.query.length >= 1 && response.length > 0) {
             response.forEach(book => {
@@ -72,8 +71,8 @@ class BooksApp extends React.Component {
           console.log("No search term")
         }
     })
-    this.setState({matchingBooks: matchingBooks})
-    console.log(matchingBooks)
+    this.setState({matchingBooks: matchingBooks});
+    console.log(query)
 }
 
   componentDidMount(){

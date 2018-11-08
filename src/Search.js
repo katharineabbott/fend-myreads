@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import Book from './Book'
 // import escapeRegExp from 'escape-string-regexp'
 // import sortBy from 'sort-by'
-import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {    
     render() {
+        
         return (
             <div>
                 <div className="search-books">
@@ -31,7 +31,7 @@ class Search extends Component {
                 </div>
                         <ol className="books-grid">
                             {this.props.matchingBooks.map((book) => (
-                                <Book key={book.id} title={book.title} author={book.authors.join(', ')} url={book.imageLinks.thumbnail} shelf={book.shelf}  handleShelfChange={this.props.handleShelfChange} id={book.id} book={book}/>
+                                <Book key={book.id} title={book.title} url={book.imageLinks.thumbnail} shelf={book.shelf}  handleShelfChange={this.props.handleShelfChange} id={book.id} book={book}/>
                             ))}
                         </ol>
             </div>

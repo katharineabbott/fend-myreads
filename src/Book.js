@@ -3,13 +3,27 @@ import * as BooksAPI from './BooksAPI'
 
 class Book extends Component {
     state = {
-        bookCategory: "none"
+        bookCategory: "none",
+        author: ""
+    }
+
+    checkForAuthor = (book) => {
+        if (book.hasOwnProperty('authors')) {
+            this.setState({author: book.authors.join(', ')})
+
+        } else {
+            this.setState({author: "No author"})
+        }
     }
 
     shelfChange = (book, shelf) => {
         BooksAPI.update(book, shelf).then((response) => {this.props.handleShelfChange(shelf, book)})
     }
-    
+
+    componentDidMount() {
+        this.checkForAuthor(this.props.book)
+    }
+
     render() {
 
         return (
@@ -28,7 +42,7 @@ class Book extends Component {
                     </div>
                     </div>
                     <div className="book-title">{this.props.title}</div>
-                    <div className="book-authors">{this.props.author}</div>
+                    <div className="book-authors">{this.state.author}</div>
                 </div>
             </li>
         )
