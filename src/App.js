@@ -72,8 +72,12 @@ class BooksApp extends React.Component {
         }
     })
     this.setState({matchingBooks: matchingBooks});
-    console.log(query)
 }
+
+  handleSearchChange = (query) => {
+    this.setState({matchingBooks: []})
+    this.updateQuery(query)
+  }
 
   componentDidMount(){
     this.populateShelves()
@@ -82,7 +86,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.screen === "search" && (
-            <Search updateQuery={this.updateQuery} query={this.state.query} matchingBooks={this.state.matchingBooks} currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange}/>
+            <Search updateQuery={this.updateQuery} query={this.state.query} matchingBooks={this.state.matchingBooks} currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange} />
          )}
         {this.state.screen === "bookshelf" && (
           <BookCase currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange}/>
