@@ -5,7 +5,8 @@ class Book extends Component {
     state = {
         bookCategory: "none",
         author: "",
-        thumbnailURL: ""
+        thumbnailURL: "",
+        shelf: ""
     }
 
     checkForAuthor = (book) => {
@@ -26,12 +27,21 @@ class Book extends Component {
     }
 
     shelfChange = (book, shelf) => {
-        BooksAPI.update(book, shelf).then((response) => {this.props.handleShelfChange(shelf, book)})
+        BooksAPI.update(book, shelf).then(() => {this.props.handleShelfChange(shelf, book)})
     }
+
+    // checkForShelf = (book) => {
+    //     if(book.hasOwnProperty('shelf')) {
+    //         this.setState({shelf: book.shelf})
+    //     } else {
+    //         this.setState({shelf: "none"})
+    //     }
+    // }
 
     componentDidMount() {
         this.checkForAuthor(this.props.book)
         this.checkForThumbnail(this.props.book)
+        // this.checkForShelf(this.props.book)
     }
 
     render() {

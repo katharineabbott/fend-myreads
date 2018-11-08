@@ -10,7 +10,7 @@ class BooksApp extends React.Component {
     currentlyReadingShelf: [],
     wantToReadShelf: [],
     readShelf: [],
-    screen: "search",
+    screen: "bookshelf",
     query: "",
     matchingBooks: []
   }
@@ -59,8 +59,7 @@ class BooksApp extends React.Component {
 
   updateQuery = (query) => {
     let matchingBooks = []
-    this.setState({query: query.trim()})
-    //toss in if statement for 0 length query
+    this.setState({query: query})
     if (query.length > 0){
       BooksAPI.search(query).then((response) => {
         if (this.state.query.length >= 1 && response.length > 0) {
@@ -69,10 +68,10 @@ class BooksApp extends React.Component {
             })
         } else {
             alert("No books found")
-            this.setState({query: ""})
             this.setState({matchingBooks: []})
         } 
         this.setState({matchingBooks: matchingBooks});
+        console.log(matchingBooks)
     }
       )} else {
         this.setState({matchingBooks: []})
