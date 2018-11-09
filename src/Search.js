@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Book from './Book'
+import {Link} from 'react-router-dom'
 // import escapeRegExp from 'escape-string-regexp'
 // import sortBy from 'sort-by'
 
@@ -10,7 +11,7 @@ class Search extends Component {
             <div>
                 <div className="search-books">
                     <div className="search-books-bar">
-                        <a className="close-search" onClick={() => this.props.clickToBookshelf()}>Close</a>
+                        <Link to="/" className="close-search">Close</Link>
                         <div className="search-books-input-wrapper">
                         {/*
                             NOTES: The search from BooksAPI is limited to a particular set of search terms.
