@@ -30,18 +30,18 @@ class Book extends Component {
         BooksAPI.update(book, shelf).then(() => {this.props.handleShelfChange(shelf, book)})
     }
 
-    // checkForShelf = (book) => {
-    //     if(book.hasOwnProperty('shelf')) {
-    //         this.setState({shelf: book.shelf})
-    //     } else {
-    //         this.setState({shelf: "none"})
-    //     }
-    // }
+    checkForShelf = (book) => {
+        if(book.hasOwnProperty('shelf')) {
+            this.setState({shelf: book.shelf})
+        } else {
+            this.setState({shelf: "none"})
+        }
+    }
 
     componentDidMount() {
         this.checkForAuthor(this.props.book)
         this.checkForThumbnail(this.props.book)
-        // this.checkForShelf(this.props.book)
+        this.checkForShelf(this.props.book)
     }
 
     render() {
@@ -52,7 +52,7 @@ class Book extends Component {
                     <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(' + this.state.thumbnailURL + ')' }}></div>
                     <div className="book-shelf-changer">
-                        <select defaultValue={this.props.shelf} onChange={(event) => {this.shelfChange(this.props.book, event.nativeEvent.target.value)}}>
+                        <select value={this.state.shelf} onChange={(event) => {this.shelfChange(this.props.book, event.nativeEvent.target.value)}}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
