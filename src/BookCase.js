@@ -14,7 +14,7 @@ class BookCase extends Component {
                     <Shelf title='Read' bookArray={this.props.read} handleShelfChange={this.props.handleShelfChange}/>
                 </div>
                 <div className="open-search">
-                    <a>Add a book</a>
+                    <a onClick={() => this.props.clickToSearch()}>Add a book</a>
                 </div>
             </div>
         )

@@ -84,6 +84,14 @@ class BooksApp extends React.Component {
     this.updateQuery(query)
   }
 
+  clickToSearch = () => {
+    this.setState({screen: "search"})
+  }
+
+  clickToBookshelf = () => {
+    this.setState({screen: "bookshelf"})
+  }
+
   componentDidMount(){
     this.populateShelves()
   }
@@ -91,10 +99,10 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.screen === "search" && (
-            <Search updateQuery={this.updateQuery} query={this.state.query} matchingBooks={this.state.matchingBooks} currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange} />
+            <Search updateQuery={this.updateQuery} query={this.state.query} matchingBooks={this.state.matchingBooks} currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange} clickToBookshelf={this.clickToBookshelf}/>
          )}
         {this.state.screen === "bookshelf" && (
-          <BookCase currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange}/>
+          <BookCase currentlyReading={this.state.currentlyReadingShelf} wantToRead={this.state.wantToReadShelf} read={this.state.readShelf} handleShelfChange={this.handleShelfChange} clickToSearch={this.clickToSearch}/>
         )}
       </div>
     )
