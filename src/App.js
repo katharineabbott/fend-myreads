@@ -15,6 +15,9 @@ class BooksApp extends React.Component {
     matchingBooks: []
   }
 
+  // checks the "shelf" attribute of each book currently on a shelf and adds that 
+  // book to the corresponding array. the arrays then update the state so each shelf
+  // has an array of books that are on it
   populateShelves = () => {
     let noShelf = this.state.noShelf
     let currentlyReadingShelf = this.state.currentlyReadingShelf
@@ -40,6 +43,9 @@ class BooksApp extends React.Component {
     })
   }
 
+  // when a book is moved to a new shelf, this checks if it already exists on that
+  // shelf (which prompts an alert) and if not, empties all shelf state arrays and 
+  // calls populateShelves to re-render the shelves with the new contents
   handleShelfChange = (shelf, book) => {
     if (book.shelf !== shelf) {
       book.shelf = shelf
@@ -53,6 +59,9 @@ class BooksApp extends React.Component {
     }
   }
 
+  // takes in a query and searches BooksAPI for matches. if matches are found, 
+  // they are added to the matchingBooks array and the state is updated with the
+  // matching books. 
   updateQuery = (query) => {
     let matchingBooks = []
     this.setState({query: query})
