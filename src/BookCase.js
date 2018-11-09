@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Shelf from './Shelf'
+import {Link} from 'react-router-dom'
 
 class BookCase extends Component {
     render() {
@@ -14,7 +15,7 @@ class BookCase extends Component {
                     <Shelf title='Read' bookArray={this.props.read} handleShelfChange={this.props.handleShelfChange}/>
                 </div>
                 <div className="open-search">
-                    <a>Add a book</a>
+                    <Link to='/search'>Add a book</Link>
                 </div>
             </div>
         )
