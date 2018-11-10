@@ -92,9 +92,11 @@ class BooksApp extends React.Component {
     while (matchingBookIndex < this.state.matchingBooks.length) {
       var readBookIndex = 0
       while (readBookIndex < this.state.readShelf.length) {
+        if (this.state.matchingBooks[matchingBookIndex].id === this.state.readShelf[readBookIndex].id){
+          //implement me
+        }
         readBookIndex++;
       }
-      
       matchingBookIndex++;
     }
     return (
