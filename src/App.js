@@ -88,23 +88,11 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    for (var book1 in this.state.matchingBooks) {
-      var i = 0
-      while (i < this.state.matchingBooks.length) {
-        for (var book2 in this.state.currentlyReadingShelf){
-          var j = i + 1
-          var book1 = book1[i]
-          while (j < this.state.currentlyReadingShelf.length){
-            var book2 = book2[j]
-            if (book1.id === book2.id) {
-              book1["shelf"] = "currentlyReading"
-            }
-            j++
-        }
-       i++ 
-      }
+    var matchingBookIndex = 0;
+    while (matchingBookIndex < this.state.matchingBooks.length) {
+      
+      matchingBookIndex++;
     }
-  }
     return (
       <div className="app">
         <Route exact path='/search' render={() => (
