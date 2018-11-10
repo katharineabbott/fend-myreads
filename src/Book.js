@@ -8,6 +8,8 @@ class Book extends Component {
     shelf: ""
   }
 
+  // checks if the book object has an author attribute. if not, it is set
+  // to "No author" to handle books that do not have an author.
   checkForAuthor = (book) => {
     if (book.hasOwnProperty('authors')) {
       this.setState({author: book.authors.join(', ')})
@@ -16,6 +18,8 @@ class Book extends Component {
     }
   }
 
+  // checks if the book object has a thumbnail attribute. if not, it is set
+  // to a grey image to handle books that do not have a thumbnail.
   checkForThumbnail = (book) => {
     if(book.hasOwnProperty('imageLinks')) {
       this.setState({thumbnailURL: book.imageLinks.thumbnail})
@@ -28,6 +32,8 @@ class Book extends Component {
     BooksAPI.update(book, shelf).then(() => {this.props.handleShelfChange(shelf, book)})
   }
 
+  // checks if the book object has a shelf attribute. if not, the shelf state is set
+  // to "none" so that the drop down menu accurately reflects the current shelf
   checkForShelf = (book) => {
     if(book.hasOwnProperty('shelf')) {
       this.setState({shelf: book.shelf})

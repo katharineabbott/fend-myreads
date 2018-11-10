@@ -59,9 +59,10 @@ class BooksApp extends React.Component {
     }
   }
 
-  // takes in a query and searches BooksAPI for matches. if matches are found, 
-  // they are added to the matchingBooks array and the state is updated with the
-  // matching books. 
+  // takes in a query and checks if the query is blank. if not, it searches BooksAPI 
+  // for matches. if matches are found, they are added to the matchingBooks array and 
+  // the state is updated with the matching books. if not, an alert is triggered that 
+  // no matches were found and all books are removed from the matchingBooks array
   updateQuery = (query) => {
     let matchingBooks = []
     this.setState({query: query})
@@ -94,6 +95,7 @@ class BooksApp extends React.Component {
             updateQuery={this.updateQuery}
             query={this.state.query}
             matchingBooks={this.state.matchingBooks}
+            handleShelfChange={this.handleShelfChange}
           />
         )}/>
         <Route exact path='/' render={() => (
