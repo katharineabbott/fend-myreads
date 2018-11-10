@@ -90,6 +90,10 @@ class BooksApp extends React.Component {
   render() {
     var matchingBookIndex = 0;
     while (matchingBookIndex < this.state.matchingBooks.length) {
+      var readBookIndex = 0
+      while (readBookIndex < this.state.readShelf.length) {
+        readBookIndex++;
+      }
       
       matchingBookIndex++;
     }
